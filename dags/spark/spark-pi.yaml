@@ -16,7 +16,7 @@ spec:
   driver:
     cores: 1
     memory: "1g"
-    serviceAccount: airflow-k8s-executor
+    serviceAccount: spark-operator-spark
     labels: { "app": "spark-pi" }
   executor:
     instances: 1
