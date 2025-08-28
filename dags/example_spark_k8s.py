@@ -14,8 +14,8 @@ with DAG(
     submit = SparkKubernetesOperator(
         task_id="submit_spark_pi",
         # Đường dẫn file SparkApplication trong DAGs (đã git-sync)
-        application_file="/opt/airflow/dags/spark/spark-pi.yaml",
-        namespace="data",
+        application_file="spark/spark-pi.yaml",
+        namespace="blue-lakehouse",
         do_xcom_push=True,   # để sensor biết tên ứng dụng
         delete_on_termination=True,  # xóa SparkApplication sau khi xong
     )
