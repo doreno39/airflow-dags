@@ -22,7 +22,7 @@ with DAG(
 
     monitor = SparkKubernetesSensor(
         task_id="monitor_spark_pi",
-        namespace="data",
+        namespace="blue-lakehouse",
         application_name="{{ task_instance.xcom_pull(task_ids='submit_spark_pi')['metadata']['name'] }}",
         attach_log=True,
         poke_interval=30,
