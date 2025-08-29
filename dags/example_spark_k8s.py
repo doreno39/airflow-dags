@@ -17,7 +17,7 @@ with DAG(
         application_file="spark/spark-pi.yaml",
         namespace="blue-lakehouse",
         do_xcom_push=False,   # để sensor biết tên ứng dụng
-        delete_on_termination=True,  # xóa SparkApplication sau khi xong
+        delete_on_termination=False,  # xóa SparkApplication sau khi xong
     )
 
     monitor = SparkKubernetesSensor(
