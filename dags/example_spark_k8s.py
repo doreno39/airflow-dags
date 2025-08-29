@@ -16,14 +16,14 @@ with DAG(
         # Đường dẫn file SparkApplication trong DAGs (đã git-sync)
         application_file="spark/spark-pi.yaml",
         namespace="blue-lakehouse",
-        do_xcom_push=True,   # để sensor biết tên ứng dụng
+        do_xcom_push=False,   # để sensor biết tên ứng dụng
         delete_on_termination=True,  # xóa SparkApplication sau khi xong
     )
 
     monitor = SparkKubernetesSensor(
         task_id="monitor_spark_pi",
         namespace="blue-lakehouse",
-        application_name="{{ task_instance.xcom_pull(task_ids='submit_spark_pi')['metadata']['name'] }}",
+        application_name="spark-pi-{{ ts_nodash }}",
         attach_log=True,
         poke_interval=30,
         timeout=60 * 30,
