@@ -23,7 +23,7 @@ with DAG(
     monitor = SparkKubernetesSensor(
         task_id="monitor_spark_pi",
         namespace="blue-lakehouse",
-        application_name="spark-pi-{{ ts_nodash }}",
+        application_name="spark-pi-{{ ts_nodash | lower }}",
         attach_log=True,
         poke_interval=30,
         timeout=60 * 30,
